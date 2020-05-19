@@ -1,0 +1,9 @@
+---
+- name: playbook name
+  hosts: check_point
+  connection: httpapi
+  tasks:
+    - name: show ioc
+      check_point.mgmt.cp_mgmt_threat_indicator_facts:
+        details_level: full
+        limit: 3

@@ -1,0 +1,10 @@
+---
+- name: playbook name
+  hosts: check_point
+  connection: httpapi
+  tasks:
+    - name: show sessions
+      check_point.mgmt.cp_mgmt_session_facts:
+        details_level: full
+        limit: 3
+

@@ -9,9 +9,8 @@
         must_change_password: false
         name: Loki
         password: QAZqaz123
+        multi_domain_profile: System Data
         permissions_profile: read write all
         state: present
         auto_publish_session: yes
-     
-      vars: 
-        ansible_checkpoint_domain: System Data
+
