@@ -1,0 +1,28 @@
+---
+- name: playbook name
+  hosts: check_point
+  connection: httpapi
+  tasks:
+    - name: add-access-rule
+      check_point.mgmt.cp_mgmt_access_rule:
+        layer: Moscow_new Network
+        name: first
+        position: 1
+        action: Accept
+        source: Loki_win
+        service: 
+          - http
+          - https
+        track:
+          type: Log
+        state: present
+        auto_publish_session: yes
+    - name: add-threat-rule
+      check_point.mgmt.cp_mgmt_threat_rule:
+        layer: Moscow_new Threat Prevention
+        name: first
+        position: 1
+        protected_scope: internal_lan
+        action: Optimized
+        state: present
+        auto_publish_session: yes

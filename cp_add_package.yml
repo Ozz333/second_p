@@ -1,0 +1,14 @@
+---
+- name: playbook name
+  hosts: check_point
+  connection: httpapi
+  tasks:
+    - name: Create package
+      check_point.mgmt.cp_mgmt_package:
+        name: Moscow_new
+        access: true
+        installation_targets: Moscow_GW
+        state: present
+        threat_prevention: true
+        auto_publish_session: yes
+

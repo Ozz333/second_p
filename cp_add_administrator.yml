@@ -1,0 +1,17 @@
+---
+- name: playbook name
+  hosts: check_point
+  connection: httpapi
+  tasks:
+    - name: add-administrator
+      check_point.mgmt.cp_mgmt_administrator:
+        authentication_method: check point password
+        must_change_password: false
+        name: Loki
+        password: QAZqaz123
+        permissions_profile: read write all
+        state: present
+        auto_publish_session: yes
+     
+      vars: 
+        ansible_checkpoint_domain: System Data

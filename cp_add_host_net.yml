@@ -1,0 +1,23 @@
+---
+- name: playbook name
+  hosts: check_point
+  connection: httpapi
+  tasks:
+    - name: Create host object
+      check_point.mgmt.cp_mgmt_host:
+        name: new_1
+        ip_address: 192.168.0.15
+        state: present
+        auto_publish_session: yes
+    - name: add-network
+      check_point.mgmt.cp_mgmt_network:
+        name: New Network 1
+        state: present
+        subnet: 192.0.2.0
+        subnet_mask: 255.255.255.0
+        nat_settings:
+          auto_rule: yes
+          hide_behind: ip-address
+          ip_address: 192.100.100.100
+          method: hide
+        auto_publish_session: yes
