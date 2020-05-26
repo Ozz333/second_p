@@ -2,5 +2,4 @@
 collections:
 # With just the collection name
 - name: check_point.mgmt
-  version: 1.0.5
-  source: https://galaxy.ansible.com
+  source: https://github.com/CheckPointSW/CheckPointAnsibleMgmtCollection
