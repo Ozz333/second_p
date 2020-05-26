@@ -2,4 +2,3 @@
 collections:
 # With just the collection name
 - name: check_point.mgmt
-  source: https://github.com/CheckPointSW/CheckPointAnsibleMgmtCollection
