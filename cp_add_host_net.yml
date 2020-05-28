@@ -1,15 +1,15 @@
 ---
-- name: playbook name
+- name: add-host-add-net
   hosts: check_point
   connection: httpapi
   tasks:
     - name: Create host object
       check_point.mgmt.cp_mgmt_host:
-        name: new_1
+        name: new_host_1
         ip_address: 192.168.0.15
         state: present
         auto_publish_session: yes
-    - name: add-network
+    - name: add-network_1
       check_point.mgmt.cp_mgmt_network:
         name: New Network 1
         state: present
