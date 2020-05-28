@@ -3,11 +3,17 @@
   hosts: check_point
   connection: httpapi
   tasks:
-    - name: set-access-rule
+    - name: delete-access-rule
+      cp_mgmt_access_rule:
+        layer: Network
+        name: stealth
+        state: absent
+        auto_publish_session: yes
+    - name: add-access-rule
       check_point.mgmt.cp_mgmt_access_rule:
         layer: Moscow_new Network
         name: stealth
-        position: Top
+        position: top
         action: Drop
         source: Management_lan
         source_negate: True
@@ -20,7 +26,6 @@
       check_point.mgmt.cp_mgmt_access_rule:
         layer: Moscow_new Network
         name: cleanup
-        position: Bottom
         action: Drop
         track:
           type: Log
