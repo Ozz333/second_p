@@ -1,0 +1,21 @@
+---
+- hosts: localhost
+  collections:
+  - fortinet.fortios
+  vars:
+   host: "10.10.30.210"
+   username: "admin"
+   password: "QAZqaz123"
+   vdom: "root"
+   ssl_verify: "False"
+  tasks:
+  - name: Configure global attributes.
+    fortios_system_global:
+      host:  "{{ host }}"
+      username: "{{ username }}"
+      password: "{{ password }}"
+      vdom:  "{{ vdom }}"
+      https: "True"
+      ssl_verify:  "{{ ssl_verify }}"
+      system_global:
+        admintimeout: "5"
