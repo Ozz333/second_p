@@ -6,7 +6,7 @@
     - name: add-access-rule
       check_point.mgmt.cp_mgmt_access_rule:
         layer: Moscow_new Network
-        name: stelth
+        name: stealth
         position: 1
         action: Drop
         source: Management_lan
