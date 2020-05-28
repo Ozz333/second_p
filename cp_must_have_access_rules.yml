@@ -1,0 +1,28 @@
+---
+- name: playbook name
+  hosts: check_point
+  connection: httpapi
+  tasks:
+    - name: add-access-rule
+      check_point.mgmt.cp_mgmt_access_rule:
+        layer: Moscow_new Network
+        name: stelth
+        position: 1
+        action: Drop
+        source: Management_lan
+        source_negate: True
+        destination: Moscow_GW
+        track:
+          type: Log
+        state: present
+        auto_publish_session: yes
+    - name: add-access-rule
+      check_point.mgmt.cp_mgmt_access_rule:
+        layer: Moscow_new Network
+        name: cleanup
+        position: last
+        action: Drop
+        track:
+          type: Log
+        state: present
+        auto_publish_session: yes
