@@ -1,0 +1,15 @@
+---
+- name: playbook name
+  hosts: check_point
+  connection: httpapi
+  tasks:
+    - name: set-simple-gateway
+      cp_mgmt_simple_gateway:
+        name: Moscow_GW
+        state: present
+        logs_settings:
+          alert_when_free_disk_space_below: True
+          alert_when_free_disk_space_below_threshold: 20
+          alert_when_free_disk_space_below_type: Log
+          free_disk_space_metrics: percent
+        auto_publish_session: yes
