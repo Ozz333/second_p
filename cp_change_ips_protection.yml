@@ -31,7 +31,7 @@
           limit: 50
           offset: 0
           details-level: standard
-          filter: {{ cve }}
+          filter: "CVE-2006-6183"
       register: loginoutput
 
     - set_fact:
