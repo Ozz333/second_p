@@ -32,7 +32,7 @@
           offset: 0
           details-level: standard
           filter: "CVE-2005-2020"
-      register: "{{ protections.name }}"
+      register: loginoutput
 
     - set_fact:
-        protection_name: "{{ protections.name }}"
+        protection_name: "{{ loginoutput.json.protections | map(attribute='name') | list }}"
