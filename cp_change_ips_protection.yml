@@ -56,16 +56,16 @@
             track: log
             capture-packets: true
 
-  - name: publish
-    hosts: 127.0.0.1
-    tasks:
-      - name: change
-        uri:
-          url: "https://10.10.30.17/web_api/v1.6/publish"
-          validate_certs: false
-          method: POST
-          body_format: json
-          headers:
-            X-chkp-sid: "{{ sid }}"
-          body:
-            {}
+- name: publish
+  hosts: 127.0.0.1
+  tasks:
+    - name: change
+      uri:
+        url: "https://10.10.30.17/web_api/v1.6/publish"
+        validate_certs: false
+        method: POST
+        body_format: json
+        headers:
+          X-chkp-sid: "{{ sid }}"
+        body:
+          {}
