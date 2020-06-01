@@ -1,0 +1,35 @@
+---
+- name: Login
+  hosts: 127.0.0.1
+  tasks:
+    - name: login
+      uri:
+        url: "https://192.168.150.152/token/v2/authenticate"
+        method: POST
+        timeout: 3000
+        validate_certs: false
+        body_format: form-urlencoded
+        body:
+          username: "admin"
+          password: "Vpn!2345"
+      register: login
+
+    - set_fact:
+        cookie: "{{ login.cookies_string }}"
+
+- name: ask
+  hosts: 127.0.0.1
+  tasks:
+    - name: ask
+      uri:
+        url: "https://192.168.150.152/tenants/132/security-events/queries"
+        method: POST
+        timeout: 3000
+        validate_certs: false
+        body_format: json
+        headers:
+          cookie: "{{ cookie }}"
+        body:
+          timeRange:
+            from: "2020-05-31T18:07:31Z"
+            to: "2020-06-01T18:07:31Z"
