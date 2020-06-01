@@ -1,8 +1,4 @@
 ---
 collections:
 # With just the collection name
-- name: check_point.mgmt
-  source: https://galaxy.ansible.com
-- name: fortinet.fortios
-  version: 1.0.9
-  source: https://galaxy.ansible.com
+- check_point.mgmt
