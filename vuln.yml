@@ -1,0 +1,13 @@
+---
+- name: playbook name
+  hosts: 127.0.0.1
+  tasks:
+    - name: load
+      read_csv:
+        path: vuln_1.csv
+        delimiter: ';'
+      register: my_cve
+      delegate_to: localhost
+
+    - set_fact:
+        cve_var: ["{{ my_cve.list.0.cve }}", "{{ my_cve.list.1.cve }}", "{{ my_cve.list.2.cve }}"]
