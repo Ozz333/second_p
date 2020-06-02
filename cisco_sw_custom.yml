@@ -22,6 +22,18 @@
   tasks:
     - name: ask
       uri:
+        url: "https://192.168.150.152/sw-reporting/v1/tenants"
+        method: GET
+        timeout: 3000
+        validate_certs: false
+        headers:
+          cookie: "{{ cookie }}"
+
+- name: ask
+  hosts: 127.0.0.1
+  tasks:
+    - name: ask
+      uri:
         url: "https://192.168.150.152/tenants/132/security-events/queries"
         method: POST
         timeout: 3000
