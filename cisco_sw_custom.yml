@@ -26,6 +26,7 @@
         method: POST
         timeout: 3000
         validate_certs: false
+        follow_redirects: all
         body_format: json
         headers:
           cookie: "{{ cookie }}"
