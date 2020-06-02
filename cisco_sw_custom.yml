@@ -10,8 +10,8 @@
         validate_certs: false
         body_format: form-urlencoded
         body:
-          username: "admin"
-          password: "Vpn!2345"
+          username: "Loki"
+          password: "QAZqaz123"
       register: login
 
     - set_fact:
