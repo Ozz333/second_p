@@ -5,16 +5,16 @@
   tasks:
     - name: Create host object
       check_point.mgmt.cp_mgmt_host:
-        name: new_host_1
-        ip_address: 192.168.0.15
-        state: present
-        auto_publish_session: yes
+        name: "{{cp_mgmt_host['name']}}"
+        ip_address: "{{cp_mgmt_host['ip']}}"
+        state: "{{cp_mgmt_host['state']}}"
+        auto_publish_session: "{{cp_mgmt_host['auto_publish_sesion']}}"
     - name: add-network_1
       check_point.mgmt.cp_mgmt_network:
-        name: New Network 1
-        state: present
-        subnet: 192.0.2.0
-        subnet_mask: 255.255.255.0
+        name: "{{cp_mgmt_net['name']}}"
+        state: "{{cp_mgmt_net['state']}}"
+        subnet: "{{cp_mgmt_net['subnet']}}"
+        subnet_mask: "{{cp_mgmt_net['subnet_mask']}}"
         nat_settings:
           auto_rule: yes
           hide_behind: ip-address
