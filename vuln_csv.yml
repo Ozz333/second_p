@@ -10,4 +10,6 @@
       delegate_to: localhost
 
     - set_fact:
-        cve_var: ["{{ my_cve.list.0.cve }}", "{{ my_cve.list.1.cve }}", "{{ my_cve.list.2.cve }}"]
+        cve_var: ["{{ my_cve.list.0.CVE }}", "{{ my_cve.list.1.CVE }}", "{{ my_cve.list.2.CVE }}"]
+    - set_fact:
+        cve_var_2: "{{ cve_var.1 }}"
