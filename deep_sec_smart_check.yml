@@ -11,8 +11,8 @@
         status_code: 201
         body:
           user:
-            userID: "Loki"
-            password: "QAZqaz123"
+            userID: "add admin name"
+            password: "add admin pass"
       register: loginoutput
 
     - set_fact:
