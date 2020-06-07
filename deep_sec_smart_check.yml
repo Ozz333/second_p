@@ -1,0 +1,53 @@
+---
+- name: Login
+  hosts: 127.0.0.1
+  tasks:
+    - name: login
+      uri:
+        url: "https://deepsec-console-mysql.apps.im.ocp4.test/api/sessions"
+        validate_certs: false
+        method: POST
+        body_format: json
+        status_code: 201
+        body:
+          user:
+            userID: "Loki"
+            password: "QAZqaz123"
+      register: loginoutput
+
+    - set_fact:
+        token: "Bearer {{ loginoutput.json.token }}"
+
+- name: start_check_image
+  hosts: 127.0.0.1
+  tasks:
+    - name: start_check_image
+      uri:
+        url: "https://deepsec-console-mysql.apps.im.ocp4.test/api/scans"
+        validate_certs: false
+        method: POST
+        body_format: json
+        status_code: 201
+        headers:
+           Authorization: "{{ token }}"
+        body:
+          source:
+            type: "docker"
+            digest: "sha256:65ba79bf6f3f103f606011a63a12f48b8bbc4f49fde3f96bee55e975d35b00ff"
+            registry: "io-openshift-image-registry.apps.im.ocp4.test"
+            repository: "openshift/apicast-gateway"
+
+- name: result_check_image
+  hosts: 127.0.0.1
+  tasks:
+    - name: pause
+      pause:
+        minutes: 2
+    - name: start_check_image
+      uri:
+        url: "https://deepsec-console-mysql.apps.im.ocp4.test/api/scans?digest=sha256:65ba79bf6f3f103f606011a63a12f48b8bbc4f49fde3f96bee55e975d35b00ff"
+        validate_certs: false
+        method: GET
+        body_format: json
+        headers:
+           Authorization: "{{ token }}"
