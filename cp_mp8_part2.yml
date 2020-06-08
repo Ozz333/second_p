@@ -1,6 +1,4 @@
 ---
-#- debug:
-#    msg: "{{ item }}"
 - name: login
   uri:
     url: "https://10.10.30.17/web_api/v1.6/login"

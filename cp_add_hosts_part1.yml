@@ -1,0 +1,19 @@
+---
+- name: playbook name
+  hosts: 127.0.0.1
+  tasks:
+    - name: load
+      read_csv:
+        path: hosts.csv
+        delimiter: ';'
+      register: new_hosts
+      delegate_to: localhost
+
+    - name: set facts
+      set_fact:
+        host_ip: "{{ host_ip | default([]) + [item.ip] }}"
+        host_name: "{{ host_name | default([]) + [item.name] }}"
+
+    - name: create hosts
+      include_tasks: 6.yml
+      loop: "{{ new_hosts.list }}"

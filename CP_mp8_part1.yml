@@ -14,6 +14,6 @@
       loop: "{{ my_cve.list }}"
       when: item.CVE != ""
 
-    - name: deploy files with network address in them
+    - name: work with cp ips
       include_tasks: cp_mp8_part2.yml
       loop: "{{ cve_var }}"
