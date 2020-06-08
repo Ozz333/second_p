@@ -1,0 +1,61 @@
+---
+#- debug:
+#    msg: "{{ item }}"
+- name: login
+  uri:
+    url: "https://10.10.30.17/web_api/v1.6/login"
+    validate_certs: false
+    method: POST
+    body_format: json
+    body:
+      user: "admin"
+      password: "QAZqaz123"
+  register: loginoutput
+
+- set_fact:
+    sid: "{{ loginoutput.json.sid }}"
+
+- name: show
+  uri:
+    url: "https://10.10.30.17/web_api/v1.6/show-threat-protections"
+    validate_certs: false
+    method: POST
+    body_format: json
+    headers:
+      X-chkp-sid: "{{ sid }}"
+    body:
+      limit: 50
+      offset: 0
+      details-level: standard
+      filter: "{{ item }}"
+  register: loginoutput
+
+- set_fact:
+    protection_name: "{{ loginoutput.json.protections | map(attribute='name') | list }}"
+
+- name: change
+  uri:
+    url: "https://10.10.30.17/web_api/v1.6/set-threat-protection"
+    validate_certs: false
+    method: POST
+    body_format: json
+    headers:
+      X-chkp-sid: "{{ sid }}"
+    body:
+      name: "{{ protection_name|join }}"
+      overrides:
+        profile: Basic
+        action: prevent
+        track: log
+        capture-packets: true
+
+- name: publish
+  uri:
+    url: "https://10.10.30.17/web_api/v1.6/publish"
+    validate_certs: false
+    method: POST
+    body_format: json
+    headers:
+      X-chkp-sid: "{{ sid }}"
+    body:
+      {}

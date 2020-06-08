@@ -1,0 +1,19 @@
+---
+- name: playbook name
+  hosts: 127.0.0.1
+  tasks:
+    - name: load
+      read_csv:
+        path: vuln_mp8_short.csv
+        delimiter: ';'
+      register: my_cve
+      delegate_to: localhost
+
+    - set_fact:
+        cve_var: "{{ cve_var | default([]) + [item.CVE] }}"
+      loop: "{{ my_cve.list }}"
+      when: item.CVE != ""
+
+    - name: deploy files with network address in them
+      include_tasks: cp_mp8_part2.yml
+      loop: "{{ cve_var }}"
