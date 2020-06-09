@@ -1,0 +1,20 @@
+---
+- name: Login
+  hosts: 127.0.0.1
+  tasks:
+    - name: Include vars
+      include_vars:
+        file: CP_vars.yml
+    - name: login
+      uri:
+        url: "https://10.10.30.17/web_api/v1.6/login"
+        validate_certs: false
+        method: POST
+        body_format: json
+        body:
+          user: "{{ user }}"
+          password: "{{ password }}"
+      register: loginoutput
+
+    - set_fact:
+        sid: "{{ loginoutput.json.sid }}"
