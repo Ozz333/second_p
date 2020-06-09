@@ -15,5 +15,5 @@
         host_name: "{{ host_name | default([]) + [item.name] }}"
 
     - name: create hosts
-      include_tasks: 6.yml
+      include_tasks: cp_add_hosts_part2.yml
       loop: "{{ new_hosts.list }}"
