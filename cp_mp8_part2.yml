@@ -46,6 +46,13 @@
         action: prevent
         track: log
         capture-packets: true
+  ignore_errors: yes
+  register: result
+
+- name: debug
+  debug:
+    msg: no {{ item }} in CP
+  when: result is failed
 
 - name: publish
   uri:
