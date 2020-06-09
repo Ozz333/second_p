@@ -4,7 +4,7 @@
   tasks:
     - name: load
       read_csv:
-        path: vuln_mp8_short.csv
+        path: new_cve.csv
         delimiter: ';'
       register: my_cve
       delegate_to: localhost
