@@ -1,0 +1,15 @@
+---
+- name: terraform
+  hosts: 127.0.0.1
+  tasks:
+    - terraform:
+        project_path: "/home/ozz/yandex_mgmt"
+        state: present
+      register: loginoutput
+
+    - set_fact:
+        cp_mgmt_ip: "{{ loginoutput.outputs.external_ip_address_cp_mgmt.value }}"
+
+    - debug:
+        msg: "{{ cp_mgmt_ip }}"
+
