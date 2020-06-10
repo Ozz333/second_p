@@ -3,7 +3,7 @@
   hosts: 127.0.0.1
   tasks:
     - terraform:
-        project_path: "/home/ozz/yandex_mgmt"
+        project_path: "yandex_mgmt"
         state: present
       register: loginoutput
 
@@ -12,4 +12,3 @@
 
     - debug:
         msg: "{{ cp_mgmt_ip }}"
-
