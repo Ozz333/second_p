@@ -19,7 +19,7 @@
 
 - name: add package
   uri:
-    url: "https://130.193.48.217/web_api/v1.6/set-package"
+    url: "https://130.193.48.217/web_api/v1.6/add-package"
     validate_certs: false
     method: POST
     body_format: json
@@ -34,7 +34,7 @@
 
 - name: add mgmt access rule
   uri:
-    url: "https://130.193.48.217/web_api/v1.6/set-access-rule"
+    url: "https://130.193.48.217/web_api/v1.6/add-access-rule"
     validate_certs: false
     method: POST
     body_format: json
@@ -50,9 +50,9 @@
       track: log
       comments: by automation
 
-- name: add mgmt access rule
+- name: add last access rule
   uri:
-    url: "https://130.193.48.217/web_api/v1.6/set-access-rule"
+    url: "https://130.193.48.217/web_api/v1.6/add-access-rule"
     validate_certs: false
     method: POST
     body_format: json
@@ -65,6 +65,18 @@
       action: Drop
       track: log
       comments: by automation
+
+- name: delete default rule
+    uri:
+      url: "https://130.193.48.217/web_api/v1.6/delete-access-rule"
+      validate_certs: false
+      method: POST
+      body_format: json
+      headers:
+         X-chkp-sid: "{{ sid }}"
+      body:
+        name: "Cleanup rule"
+        layer: base_package Network
 
 - name: publish
   uri:
