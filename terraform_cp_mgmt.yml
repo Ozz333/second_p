@@ -12,3 +12,6 @@
 
     - debug:
         msg: "{{ cp_mgmt_ip }}"
+
+    - name: work with cp ips
+      include_tasks: cp_yandex_base.yml
