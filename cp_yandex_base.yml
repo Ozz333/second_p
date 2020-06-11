@@ -1,83 +1,78 @@
 ---
-- name: Login
-  hosts: 127.0.0.1
-  tasks:
-    - name: Include vars
-      include_vars:
-        file: CP_vars_yandex.yml
+- name: Include vars
+  include_vars:
+    file: CP_vars_yandex.yml
 
-    - name: login
-      uri:
-        url: "https://130.193.48.217/web_api/v1.6/login"
-        validate_certs: false
-        method: POST
-        body_format: json
-        body:
-          user: "{{ user }}"
-          password: "{{ password }}"
-      register: loginoutput
+- name: login
+  uri:
+    url: "https://130.193.48.217/web_api/v1.6/login"
+    validate_certs: false
+    method: POST
+    body_format: json
+    body:
+      user: "{{ user }}"
+      password: "{{ password }}"
+  register: loginoutput
 
-    - set_fact:
-        sid: "{{ loginoutput.json.sid }}"
+- set_fact:
+    sid: "{{ loginoutput.json.sid }}"
 
-    - name: add package
-      uri:
-        url: "https://130.193.48.217/web_api/v1.6/set-package"
-        validate_certs: false
-        method: POST
-        body_format: json
-        headers:
-           X-chkp-sid: "{{ sid }}"
-        body:
-          name: base_package
-          color: green
-#          installation-targets: 
-          threat-prevention: true
-          access: true
+- name: add package
+  uri:
+    url: "https://130.193.48.217/web_api/v1.6/set-package"
+    validate_certs: false
+    method: POST
+    body_format: json
+    headers:
+       X-chkp-sid: "{{ sid }}"
+    body:
+      name: base_package
+      color: green
+#      installation-targets:
+      threat-prevention: true
+      access: true
 
-    - name: add mgmt access rule
-      uri:
-        url: "https://130.193.48.217/web_api/v1.6/set-access-rule"
-        validate_certs: false
-        method: POST
-        body_format: json
-        headers:
-           X-chkp-sid: "{{ sid }}"
-        body:
-          name: mgmt_rule
-          layer: base_package Network
-          position: top
-          action: Accept
-#          destination:
-          source: mgmt_group
-          track: log
-          comments: by automation
+- name: add mgmt access rule
+  uri:
+    url: "https://130.193.48.217/web_api/v1.6/set-access-rule"
+    validate_certs: false
+    method: POST
+    body_format: json
+    headers:
+       X-chkp-sid: "{{ sid }}"
+    body:
+      name: mgmt_rule
+      layer: base_package Network
+      position: top
+      action: Accept
+#      destination:
+      source: mgmt_group
+      track: log
+      comments: by automation
 
-    - name: add mgmt access rule
-      uri:
-        url: "https://130.193.48.217/web_api/v1.6/set-access-rule"
-        validate_certs: false
-        method: POST
-        body_format: json
-        headers:
-           X-chkp-sid: "{{ sid }}"
-        body:
-          name: last_rule
-          layer: base_package Network
-          position: bottom
-          action: Drop
-          track: log
-          comments: by automation
-    
-    - name: publish
-      uri:
-        url: "https://130.193.48.217/web_api/v1.6/publish"
-        validate_certs: false
-        method: POST
-        body_format: json
-        headers:
-          X-chkp-sid: "{{ sid }}"
-        body:
-          {}
+- name: add mgmt access rule
+  uri:
+    url: "https://130.193.48.217/web_api/v1.6/set-access-rule"
+    validate_certs: false
+    method: POST
+    body_format: json
+    headers:
+       X-chkp-sid: "{{ sid }}"
+    body:
+      name: last_rule
+      layer: base_package Network
+      position: bottom
+      action: Drop
+      track: log
+      comments: by automation
 
-
+- name: publish
+  uri:
+    url: "https://130.193.48.217/web_api/v1.6/publish"
+    validate_certs: false
+    method: POST
+    body_format: json
+    headers:
+      X-chkp-sid: "{{ sid }}"
+    body:
+      {}
