@@ -24,7 +24,7 @@
     body:
       name: "{{ item.name }}"
       ip-address: "{{ item.ip }}"
-      color: green
+      color: light green
 
 - name: publish
   uri:
