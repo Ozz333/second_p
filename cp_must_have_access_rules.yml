@@ -3,7 +3,7 @@
   hosts: check_point
   connection: httpapi
   tasks:
-    - name: add-access-rule
+    - name: set-access-rule
       check_point.mgmt.cp_mgmt_access_rule:
         layer: Moscow_new Network
         name: stealth

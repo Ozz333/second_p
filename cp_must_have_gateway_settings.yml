@@ -10,6 +10,6 @@
         logs_settings:
           alert_when_free_disk_space_below: True
           alert_when_free_disk_space_below_threshold: 20
-          alert_when_free_disk_space_below_type: Log
+          alert_when_free_disk_space_below_type: log
           free_disk_space_metrics: percent
         auto_publish_session: yes
