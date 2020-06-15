@@ -13,7 +13,7 @@
 - set_fact:
     sid: "{{ loginoutput.json.sid }}"
 
-- name: show
+- name: add hosts
   uri:
     url: "https://10.10.30.17/web_api/v1.6/add-host"
     validate_certs: false
@@ -23,8 +23,8 @@
       X-chkp-sid: "{{ sid }}"
     body:
       name: "{{ item.name }}"
-      ip-address: "{{ item.ip }}"      
-      color: turquoise
+      ip-address: "{{ item.ip }}"
+      color: green
 
 - name: publish
   uri:

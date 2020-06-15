@@ -1,5 +1,5 @@
 ---
-- name: playbook name
+- name: add_hosts
   hosts: 127.0.0.1
   tasks:
     - name: load

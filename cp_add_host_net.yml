@@ -9,12 +9,14 @@
         ip_address: 192.168.44.44
         state: present
         auto_publish_session: yes
+        color: geren
     - name: add-network_1
       check_point.mgmt.cp_mgmt_network:
         name: New_net_1
         state: present
         subnet: 192.168.20.0
         subnet_mask: 255.255.255.0
+        color: geren
         nat_settings:
           auto_rule: yes
           hide_behind: ip-address
