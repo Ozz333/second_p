@@ -1,4 +1,7 @@
 ---
+- name: Include vars
+  include_vars:
+    file: CP_vars.yml
 - name: login
   uri:
     url: "https://10.10.30.17/web_api/v1.6/login"
@@ -6,8 +9,8 @@
     method: POST
     body_format: json
     body:
-      user: "admin"
-      password: "QAZqaz123"
+      user: "{{ user }}"
+      password: "{{ password }}"
   register: loginoutput
 
 - set_fact:
