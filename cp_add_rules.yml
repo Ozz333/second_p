@@ -10,7 +10,7 @@
         position: 1
         action: Accept
         source: Loki_win
-        service: 
+        service:
           - http
           - https
         track:
@@ -22,7 +22,7 @@
         layer: Moscow_new Threat Prevention
         name: first
         position: 1
-        protected_scope: internal_lan
+        protected_scope: internal_lan_2
         action: Optimized
         state: present
         auto_publish_session: yes
