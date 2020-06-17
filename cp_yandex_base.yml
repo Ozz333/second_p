@@ -5,7 +5,7 @@
 
 - name: login
   uri:
-    url: "https://130.193.48.217/web_api/v1.6/login"
+    url: "https://84.201.174.128/web_api/v1.6/login"
     validate_certs: false
     method: POST
     body_format: json
@@ -19,7 +19,7 @@
 
 - name: add package
   uri:
-    url: "https://130.193.48.217/web_api/v1.6/add-package"
+    url: "https://84.201.174.128/web_api/v1.6/add-package"
     validate_certs: false
     method: POST
     body_format: json
@@ -34,7 +34,7 @@
 
 - name: add mgmt access rule
   uri:
-    url: "https://130.193.48.217/web_api/v1.6/add-access-rule"
+    url: "https://84.201.174.128/web_api/v1.6/add-access-rule"
     validate_certs: false
     method: POST
     body_format: json
@@ -52,7 +52,7 @@
 
 - name: add last access rule
   uri:
-    url: "https://130.193.48.217/web_api/v1.6/add-access-rule"
+    url: "https://84.201.174.128/web_api/v1.6/add-access-rule"
     validate_certs: false
     method: POST
     body_format: json
@@ -68,7 +68,7 @@
 
 - name: delete default rule
     uri:
-      url: "https://130.193.48.217/web_api/v1.6/delete-access-rule"
+      url: "https://84.201.174.128/web_api/v1.6/delete-access-rule"
       validate_certs: false
       method: POST
       body_format: json
@@ -80,7 +80,7 @@
 
 - name: publish
   uri:
-    url: "https://130.193.48.217/web_api/v1.6/publish"
+    url: "https://84.201.174.128/web_api/v1.6/publish"
     validate_certs: false
     method: POST
     body_format: json
