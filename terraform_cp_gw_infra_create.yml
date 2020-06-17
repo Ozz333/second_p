@@ -3,8 +3,8 @@
   hosts: 127.0.0.1
   tasks:
     - terraform:
-        project_path: "/var/lib/awx/projects/_8__second/yandex_mgmt"
-        state: absent
+        project_path: "/home/ozz/yandex"
+        state: present
       register: loginoutput
 
     - set_fact:
