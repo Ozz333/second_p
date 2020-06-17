@@ -26,9 +26,9 @@
     headers:
        X-chkp-sid: "{{ sid }}"
     body:
-      name: base_package
+      name: "package_{{ cp_gate_name }}"
       color: green
-#      installation-targets:
+      installation-targets: gw-01
       threat-prevention: true
       access: true
 

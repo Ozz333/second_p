@@ -11,5 +11,5 @@
         cp_gate_ip: "{{ loginoutput.outputs.internal_ip_address_cp_gw.value }}"
         cp_gate_name: "{{ loginoutput.outputs.name_cp_gw.value }}"
 
-    - debug:
-        msg: "{{ cp_gate_name }}"
+    - name: work with cp ips
+      include_tasks: cp_yandex_base_short.yml
