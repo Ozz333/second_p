@@ -1,0 +1,51 @@
+---
+- name: Include vars
+  include_vars:
+    file: CP_vars_yandex.yml
+
+- name: login
+  uri:
+    url: "https://84.201.174.128/web_api/v1.6/login"
+    validate_certs: false
+    method: POST
+    body_format: json
+    body:
+      user: "{{ user }}"
+      password: "{{ password }}"
+  register: loginoutput
+
+- set_fact:
+    sid: "{{ loginoutput.json.sid }}"
+
+- name: add gw
+  uri:
+    url: "https://84.201.174.128/web_api/v1.6/delete-simple-gateway"
+    validate_certs: false
+    method: POST
+    body_format: json
+    headers:
+       X-chkp-sid: "{{ sid }}"
+    body:
+      name: gw1
+
+- name: delete package
+  uri:
+    url: "https://84.201.174.128/web_api/v1.6/delete-package"
+    validate_certs: false
+    method: POST
+    body_format: json
+    headers:
+       X-chkp-sid: "{{ sid }}"
+    body:
+      name: "package_{{ cp_gate_name }}"
+
+- name: publish
+  uri:
+    url: "https://84.201.174.128/web_api/v1.6/publish"
+    validate_certs: false
+    method: POST
+    body_format: json
+    headers:
+      X-chkp-sid: "{{ sid }}"
+    body:
+      {}
