@@ -7,8 +7,8 @@
         state: present
       register: loginoutput
 
-     - debug:
-         msg: "{{ loginoutput.outputs }}"
+    - debug:
+       msg: "{{ loginoutput.outputs }}"
 #    - set_fact:
 #        cp_gate_ip: "{{ loginoutput.outputs.internal_ip_address_cp_gw.value }}"
 #        cp_gate_name: "{{ loginoutput.outputs.name_cp_gw.value }}"
