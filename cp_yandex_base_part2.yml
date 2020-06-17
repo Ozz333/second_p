@@ -17,25 +17,6 @@
 - set_fact:
     sid: "{{ loginoutput.json.sid }}"
 
-- name: add gw
-  uri:
-    url: "https://84.201.174.128/web_api/v1.6/add-simple-gateway"
-    validate_certs: false
-    method: POST
-    body_format: json
-    headers:
-       X-chkp-sid: "{{ sid }}"
-    body:
-      name: gw1
-      color: green
-      ipv4-address: 172.16.10.30
-      version: R80.40
-      one-time-password: "vpn123"
-      firewall: true
-      ips: true
-      anti-bot: true
-      anti-virus: true
-
 - name: add package
   uri:
     url: "https://84.201.174.128/web_api/v1.6/add-package"
