@@ -85,8 +85,8 @@
       track: log
       comments: by automation
 
-- name: delete default rule
-    uri:
+ - name: delete default rule
+   uri:
       url: "https://84.201.174.128/web_api/v1.6/delete-access-rule"
       validate_certs: false
       method: POST
