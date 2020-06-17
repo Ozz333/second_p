@@ -48,4 +48,4 @@
       {}
 
 - name: cp_yandex_base
-  include_tasks: cp_yandex_base_part1.yml
+  include_tasks: cp_yandex_base_part2.yml
