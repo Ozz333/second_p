@@ -26,15 +26,15 @@
     headers:
        X-chkp-sid: "{{ sid }}"
     body:
-      name: "{{ cp_gate_name }}"
+      name: gw1
       color: green
-      ipv4-address: "{{ cp_gate_ip }}"
+      ipv4-address: 172.16.1.10
       version: R80
       one-time-password: "vpn123"
       firewall: true
       ips: true
       anti-bot: true
-      anti-virus: true 
+      anti-virus: true
 
 - name: publish
   uri:
