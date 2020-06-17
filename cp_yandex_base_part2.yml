@@ -45,7 +45,7 @@
       layer: package_gw1 Network
       position: top
       action: Accept
-#      destination:
+      destination: gw1
       source: mgmt_group
       track: log
       comments: by automation
