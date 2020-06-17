@@ -32,6 +32,9 @@
       version: R80
       one-time-password: "vpn123"
       firewall: true
+      ips: true
+      anti-bot: true
+      anti-virus: true 
 
 - name: publish
   uri:
