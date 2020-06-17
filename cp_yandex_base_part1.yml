@@ -46,3 +46,6 @@
       X-chkp-sid: "{{ sid }}"
     body:
       {}
+
+- name: cp_yandex_base
+  include_tasks: cp_yandex_base_part1.yml
