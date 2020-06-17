@@ -12,4 +12,4 @@
 #        cp_gate_name: "{{ loginoutput.outputs.name_cp_gw.value }}"
 
     - name: cp_yandex_base
-      include_tasks: cp_yandex_base_short.yml
+      include_tasks: cp_yandex_base.yml
