@@ -42,7 +42,7 @@
        X-chkp-sid: "{{ sid }}"
     body:
       name: mgmt_rule
-      layer: base_package Network
+      layer: package_gw1 Network
       position: top
       action: Accept
 #      destination:
@@ -60,7 +60,7 @@
        X-chkp-sid: "{{ sid }}"
     body:
       name: last_rule
-      layer: base_package Network
+      layer: package_gw1 Network
       position: bottom
       action: Drop
       track: log
@@ -76,7 +76,7 @@
       X-chkp-sid: "{{ sid }}"
     body:
       name: "Cleanup rule"
-      layer: base_package Network
+      layer: package_gw1 Network
 
 - name: publish
   uri:
