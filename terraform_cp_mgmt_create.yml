@@ -3,6 +3,6 @@
   hosts: 127.0.0.1
   tasks:
     - terraform:
-        project_path: "/home/ozz/yandex/modules/cp-mgmt"
+        project_path: "/var/lib/awx/projects/_8__second/yandex/modules/cp-mgmt"
         state: present
       register: loginoutput

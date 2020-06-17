@@ -3,6 +3,5 @@
   hosts: 127.0.0.1
   tasks:
     - terraform:
-        project_path: "/home/ozz/yandex"
+        project_path: "/var/lib/awx/projects/_8__second/yandex"
         state: absent
-      
