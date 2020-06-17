@@ -5,7 +5,6 @@
     - terraform:
         project_path: "/var/lib/awx/projects/_8__second/yandex"
         state: present
-        lock: false
       register: loginoutput
 
     - set_fact:
