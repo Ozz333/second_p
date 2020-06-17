@@ -28,7 +28,7 @@
     body:
       name: gw1
       color: green
-      ipv4-address: 172.16.10.30
+      ipv4-address: "{{ cp_gate_ip }}"
       version: R80
       one-time-password: "vpn123"
       firewall: true

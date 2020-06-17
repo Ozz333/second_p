@@ -26,9 +26,9 @@
     headers:
        X-chkp-sid: "{{ sid }}"
     body:
-      name: "package_gw1"
+      name: "package_{{ cp_gate_name }}"
       color: green
-      installation-targets: gw1
+      installation-targets: ""{{ cp_gate_name }}"
       threat-prevention: true
       access: true
 
@@ -42,10 +42,10 @@
        X-chkp-sid: "{{ sid }}"
     body:
       name: mgmt_rule
-      layer: package_gw1 Network
+      layer: "package_{{ cp_gate_name }} Network"
       position: top
       action: Accept
-      destination: gw1
+      destination: "{{ cp_gate_name }}"
       source: mgmt_group
       track: log
       comments: by automation
@@ -60,7 +60,7 @@
        X-chkp-sid: "{{ sid }}"
     body:
       name: last_rule
-      layer: package_gw1 Network
+      layer: "package_{{ cp_gate_name }} Network"
       position: bottom
       action: Drop
       track: log
@@ -76,7 +76,7 @@
       X-chkp-sid: "{{ sid }}"
     body:
       name: "Cleanup rule"
-      layer: package_gw1 Network
+      layer: "package_{{ cp_gate_name }} Network"
 
 - name: publish
   uri:
