@@ -28,7 +28,7 @@
     body:
       name: "package_gw1"
       color: green
-      installation-targets: gw-01
+      installation-targets: gw1
       threat-prevention: true
       access: true
 
