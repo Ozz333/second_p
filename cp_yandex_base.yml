@@ -85,17 +85,17 @@
       track: log
       comments: by automation
 
- - name: delete default rule
-   uri:
-      url: "https://84.201.174.128/web_api/v1.6/delete-access-rule"
-      validate_certs: false
-      method: POST
-      body_format: json
-      headers:
-         X-chkp-sid: "{{ sid }}"
-      body:
-        name: "Cleanup rule"
-        layer: base_package Network
+- name: delete default rule
+  uri:
+    url: "https://84.201.174.128/web_api/v1.6/delete-access-rule"
+    validate_certs: false
+    method: POST
+    body_format: json
+    headers:
+      X-chkp-sid: "{{ sid }}"
+    body:
+      name: "Cleanup rule"
+      layer: base_package Network
 
 - name: publish
   uri:
