@@ -34,7 +34,7 @@
       color: green
       ipv4-address: "{{ cp_gate_ip }}"
       version: "R80.40"
-      one-time-password: vpn123
+      one-time-password: "vpn123"
       firewall: true
       ips: true
       anti-bot: true
