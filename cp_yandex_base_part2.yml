@@ -28,7 +28,7 @@
     body:
       name: "package_{{ cp_gate_name }}"
       color: green
-      installation-targets: ""{{ cp_gate_name }}"
+      installation-targets: "{{ cp_gate_name }}"
       threat-prevention: true
       access: true
 
