@@ -7,9 +7,11 @@
         state: absent
         register: loginoutput
 
+    - debug:
+        msg: "{{ loginoutput }}"
 #    - set_fact:
 #        cp_gate_ip: "{{ loginoutput.outputs.internal_ip_address_cp_gw-public-private-net-1.value }}"
 #        cp_gate_name: "{{ loginoutput.outputs.name_cp_gw.value }}"
 
-    - name: cp_yandex_base
-      include_tasks: cp_yandex_base_remove.yml
+#    - name: cp_yandex_base
+#      include_tasks: cp_yandex_base_remove.yml
