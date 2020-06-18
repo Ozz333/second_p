@@ -19,7 +19,7 @@
 
 - name: pause
   pause:
-    minutes: 2
+    minutes: 3
 
 - name: add gw
   uri:
