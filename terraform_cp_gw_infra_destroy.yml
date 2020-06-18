@@ -5,7 +5,7 @@
     - terraform:
         project_path: "/var/lib/awx/projects/_8__second/yandex"
         state: absent
-        register: loginoutput
+      register: loginoutput
 
     - debug:
         msg: "{{ loginoutput }}"
