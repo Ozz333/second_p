@@ -17,17 +17,6 @@
 - set_fact:
     sid: "{{ loginoutput.json.sid }}"
 
-- name: add gw
-  uri:
-    url: "https://84.201.174.128/web_api/v1.6/delete-simple-gateway"
-    validate_certs: false
-    method: POST
-    body_format: json
-    headers:
-       X-chkp-sid: "{{ sid }}"
-    body:
-      name: gw1
-
 - name: delete package
   uri:
     url: "https://84.201.174.128/web_api/v1.6/delete-package"
@@ -37,7 +26,18 @@
     headers:
        X-chkp-sid: "{{ sid }}"
     body:
-      name: "package_{{ cp_gate_name }}"
+      name: "package_cp-gw-1"
+
+- name: delete gw
+  uri:
+    url: "https://84.201.174.128/web_api/v1.6/delete-simple-gateway"
+    validate_certs: false
+    method: POST
+    body_format: json
+    headers:
+       X-chkp-sid: "{{ sid }}"
+    body:
+      name: "cp-gw-1"
 
 - name: publish
   uri:
