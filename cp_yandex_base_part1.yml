@@ -26,7 +26,7 @@
     headers:
        X-chkp-sid: "{{ sid }}"
     body:
-      name: gw1
+      name: "{{ cp_gate_name }}"
       color: green
       ipv4-address: "{{ cp_gate_ip }}"
       version: R80
