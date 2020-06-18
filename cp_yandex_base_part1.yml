@@ -17,6 +17,10 @@
 - set_fact:
     sid: "{{ loginoutput.json.sid }}"
 
+- name: pause
+  pause:
+    minutes: 2
+
 - name: add gw
   uri:
     url: "https://84.201.174.128/web_api/v1.6/add-simple-gateway"
