@@ -1,0 +1,17 @@
+---
+- name: jira
+  hosts: 127.0.0.1
+  tasks:
+    - name: get issue
+      uri:
+        url: "http://10.10.30.35:8080/rest/servicedeskapi/request/FIR-2?expand=requestType"
+        method: GET
+        force_basic_auth: yes
+        body_format: json
+        user: "Loki"
+        password: "QAZqaz123"
+      register: loginoutput
+
+    - set_fact:
+       issue: "{{ loginoutput.json | json_query(\"requestFieldValues[?fieldId=='description'].value\") }}"
+#       sourse: "{{ 'issue' | regex_findall('(HTTPS)') }}"
