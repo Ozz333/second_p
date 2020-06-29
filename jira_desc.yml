@@ -14,4 +14,10 @@
 
     - set_fact:
        issue: "{{ loginoutput.json | json_query(\"requestFieldValues[?fieldId=='description'].value\") }}"
-#       sourse: "{{ 'issue' | regex_findall('(HTTPS)') }}"
+    - debug:
+        msg: "{{ issue }}"
+    - set_fact:
+       ip: "{{ issue[0] | regex_findall('\\b(?:[0-9]{1,3}\\.){3}[0-9]{1,3}\\b') }}"
+    - set_fact:
+        sourse: "{{ ip[0] }}"
+        destination: "{{ ip[1] }}"
