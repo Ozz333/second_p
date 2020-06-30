@@ -1,0 +1,61 @@
+---
+- name: jira
+  hosts: 127.0.0.1
+  tasks:
+    - name: get issue
+      uri:
+        url: "http://10.10.30.35:8080/rest/servicedeskapi/request/FIR-2"
+        method: GET
+        force_basic_auth: yes
+        body_format: json
+        user: "Loki"
+        password: "QAZqaz123"
+      register: loginoutput
+
+    - set_fact:
+        link1: "{{ loginoutput.json | json_query(\"requestFieldValues[?fieldId=='attachment'].renderedValue\") }}"
+
+    - set_fact:
+        link2: "{{ link1[0][0].content }}"
+
+    - debug:
+        msg: "{{ link2 }}"
+
+    - name: Download file
+      get_url:
+        url: "{{ link2 }}"
+        dest: /home/ozz/FB_data.csv
+        force_basic_auth: yes
+        username: "Loki"
+        password: "QAZqaz123"
+
+    - name: load
+      read_csv:
+        path: FB_data.csv
+        delimiter: ';'
+      register: fb_rules
+      delegate_to: localhost
+
+    - set_fact:
+        source_var: "{{ source_var | default([]) + [item.source] }}"
+        destination_var: "{{ destination_var | default([]) + [item.destination] }}"
+        name_var: "{{ name_var | default([]) + [item.name] }}"
+        position_var: "{{ position_var | default([]) + [item.position] }}"
+        action_var: "{{ action_var | default([]) + [item.action] }}"
+        track_var: "{{ track_var | default([]) + [item.track] }}"
+        service1_var: "{{ service1_var | default([]) + [item.service1] }}"
+        service2_var: "{{ service2_var | default([]) + [item.service2] }}"
+        service3_var: "{{ service3_var | default([]) + [item.service3] }}"
+#      loop: "{{ fb_rules.list }}"
+
+#    - set_fact:
+#        source: "{{ item }}"
+#      with_items: "{{ source_var }}"
+
+    - debug:
+        msg: "{{ source_var }} "
+      loop: "{{ fb_rules.list }}"
+
+#    - name: add rules
+#      include_tasks: 15.yml
+#      loop: "{{ fb_rules.list }}"
