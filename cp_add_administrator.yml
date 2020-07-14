@@ -1,16 +1,74 @@
 ---
 - name: playbook name
-  hosts: check_point
-  connection: httpapi
+  hosts: 127.0.0.1
   tasks:
-    - name: add-administrator
-      check_point.mgmt.cp_mgmt_administrator:
-        authentication_method: check point password
-        must_change_password: false
-        name: Loki
-        password: QAZqaz123
-        permissions_profile: read write all
-        state: present
-        auto_publish_session: yes
-      vars: 
-        ansible_checkpoint_domain: "SMC User"
+  - name: login
+    uri:
+      url: "https://10.17.47.250/web_api/v1.6/login"
+      validate_certs: false
+      method: POST
+      body_format: json
+      body:
+        user: admin
+        password: 123qweASD
+        domain: System Data
+    register: loginoutput
+
+  - set_fact:
+      sid: "{{ loginoutput.json.sid }}"
+
+  - name: add_admin_1
+    uri:
+      url: "https://10.17.47.250/web_api/v1.6/add-administrator"
+      validate_certs: false
+      method: POST
+      body_format: json
+      headers:
+        X-chkp-sid: "{{ sid }}"
+      body:
+        name: "student1"
+        password: "123qweASD"
+        must-change-password: false
+        authentication-method: check point password
+        permissions-profile: "read write all"
+
+  - name: add_admin_2
+    uri:
+      url: "https://10.17.47.250/web_api/v1.6/add-administrator"
+      validate_certs: false
+      method: POST
+      body_format: json
+      headers:
+        X-chkp-sid: "{{ sid }}"
+      body:
+        name: "student2"
+        password: "123qweASD"
+        must-change-password: false
+        authentication-method: check point password
+        permissions-profile: "read write all"
+
+  - name: add_admin_3
+    uri:
+      url: "https://10.17.47.250/web_api/v1.6/add-administrator"
+      validate_certs: false
+      method: POST
+      body_format: json
+      headers:
+        X-chkp-sid: "{{ sid }}"
+      body:
+        name: "student3"
+        password: "123qweASD"
+        must-change-password: false
+        authentication-method: check point password
+        permissions-profile: "read write all"
+
+  - name: publish
+    uri:
+      url: "https://10.17.47.250/web_api/v1.6/publish"
+      validate_certs: false
+      method: POST
+      body_format: json
+      headers:
+        X-chkp-sid: "{{ sid }}"
+      body:
+        {}
