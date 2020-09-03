@@ -4,7 +4,7 @@
         file: CP_vars.yml
 - name: login
   uri:
-    url: "https://10.10.30.17/web_api/v1.6/login"
+    url: "https://10.10.30.133/web_api/v1.6/login"
     validate_certs: false
     method: POST
     body_format: json
@@ -18,7 +18,7 @@
 
 - name: show
   uri:
-    url: "https://10.10.30.17/web_api/v1.6/show-threat-protections"
+    url: "https://10.10.30.133/web_api/v1.6/show-threat-protections"
     validate_certs: false
     method: POST
     body_format: json
@@ -36,7 +36,7 @@
 
 - name: change
   uri:
-    url: "https://10.10.30.17/web_api/v1.6/set-threat-protection"
+    url: "https://10.10.30.133/web_api/v1.6/set-threat-protection"
     validate_certs: false
     method: POST
     body_format: json
@@ -59,7 +59,7 @@
 
 - name: publish
   uri:
-    url: "https://10.10.30.17/web_api/v1.6/publish"
+    url: "https://10.10.30.133/web_api/v1.6/publish"
     validate_certs: false
     method: POST
     body_format: json
