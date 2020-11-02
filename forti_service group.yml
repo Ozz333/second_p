@@ -1,0 +1,23 @@
+---
+- hosts: localhost
+  collections:
+  - fortinet.fortios
+  vars:
+   host: "10.10.30.210"
+   username: "admin"
+   password: "QAZqaz123"
+   vdom: "root"
+   ssl_verify: "False"
+  tasks:
+  - name: Configure IPv4 static routing tables.
+    fortios_firewall_service_group:
+      vdom:  "{{ vdom }}"
+      state: "present"
+      firewall_service_group:
+        color: "3"
+        comment: "Comment."
+        member:
+         -
+            name: "default_name_6 (source firewall.service.custom.name firewall.service.group.name)"
+        name: "default_name_7"
+        proxy: "enable"
