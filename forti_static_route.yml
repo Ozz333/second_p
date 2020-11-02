@@ -1,0 +1,35 @@
+---
+- hosts: localhost
+  collections:
+  - fortinet.fortios
+  vars:
+   host: "10.10.30.210"
+   username: "admin"
+   password: "QAZqaz123"
+   vdom: "root"
+   ssl_verify: "False"
+  tasks:
+  - name: Configure IPv4 static routing tables.
+    fortios_router_static:
+      vdom:  "{{ vdom }}"
+      state: "present"
+      router_static:
+        bfd: "enable"
+        blackhole: "enable"
+        comment: "From Ansible"
+#        device: "<your_own_value> (source system.interface.name)"
+        distance: "7"
+        dst: "192.168.99.0"
+#        dstaddr: "<your_own_value> (source firewall.address.name firewall.addrgrp.name)"
+        dynamic_gateway: "enable"
+        gateway: "192.168.99.1"
+#        internet_service: "12 (source firewall.internet-service.id)"
+#        internet_service_custom: "<your_own_value> (source firewall.internet-service-custom.name)"
+        link_monitor_exempt: "enable"
+        priority: "15"
+        seq_num: "16"
+#        src: "<your_own_value>"
+        status: "enable"
+#        virtual_wan_link: "enable"
+#        vrf: "20"
+        weight: "21"
