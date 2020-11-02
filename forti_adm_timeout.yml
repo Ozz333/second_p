@@ -19,4 +19,4 @@
       ssl_verify:  "{{ ssl_verify }}"
       system_global:
         admintimeout: "5"
-        admin_console_timeout: "5"
+        #admin_console_timeout: "5"
