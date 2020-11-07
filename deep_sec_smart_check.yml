@@ -33,19 +33,19 @@
         body:
           source:
             type: "docker"
-            digest: "sha256:506b188c0abe2ae3c1561bbff7ce50284de2a241eff5da6f528a3a024871c606"
+            digest: "sha256:ebfed97ee40d3e38794a12c10587082173e90546d2cb97514d7e42457ec156b7"
             registry: "default-route-openshift-image-registry.apps.cluster-c18f.c18f.example.opentlc.com"
             repository: "openshift/golang:latest"
 
-- name: result_check_image
+- name: result_vuln_by_layer
   hosts: 127.0.0.1
   tasks:
-    - name: pause
-      pause:
-        minutes: 2
-    - name: start_check_image
+#    - name: pause
+#      pause:
+#        minutes: 2
+    - name: show vuln
       uri:
-        url: "https://console-ds-smartcheck.apps.cluster-c18f.c18f.example.opentlc.com/api/scans?digest=sha256:506b188c0abe2ae3c1561bbff7ce50284de2a241eff5da6f528a3a024871c606"
+        url: "https://console-ds-smartcheck.apps.cluster-c18f.c18f.example.opentlc.com/api/scans/0471951c-0998-441e-bc5e-4dc1435472ea/layers/sha256:506b188c0abe2ae3c1561bbff7ce50284de2a241eff5da6f528a3a024871c606/vulnerabilities"
         validate_certs: false
         method: GET
         body_format: json
