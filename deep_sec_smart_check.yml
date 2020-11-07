@@ -33,9 +33,9 @@
         body:
           source:
             type: "docker"
-            digest: "sha256:65ba79bf6f3f103f606011a63a12f48b8bbc4f49fde3f96bee55e975d35b00ff"
-            registry: "io-openshift-image-registry.apps.im.ocp4.test"
-            repository: "openshift/apicast-gateway"
+            digest: "sha256:506b188c0abe2ae3c1561bbff7ce50284de2a241eff5da6f528a3a024871c606"
+            registry: "default-route-openshift-image-registry.apps.cluster-c18f.c18f.example.opentlc.com"
+            repository: "openshift/golang:latest"
 
 - name: result_check_image
   hosts: 127.0.0.1
@@ -45,7 +45,7 @@
         minutes: 2
     - name: start_check_image
       uri:
-        url: "https://console-ds-smartcheck.apps.cluster-c18f.c18f.example.opentlc.com/api/scans?digest=sha256:65ba79bf6f3f103f606011a63a12f48b8bbc4f49fde3f96bee55e975d35b00ff"
+        url: "https://console-ds-smartcheck.apps.cluster-c18f.c18f.example.opentlc.com/api/scans?digest=sha256:506b188c0abe2ae3c1561bbff7ce50284de2a241eff5da6f528a3a024871c606"
         validate_certs: false
         method: GET
         body_format: json
