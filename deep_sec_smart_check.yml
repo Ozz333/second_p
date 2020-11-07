@@ -4,15 +4,15 @@
   tasks:
     - name: login
       uri:
-        url: "https://deepsec-console-mysql.apps.im.ocp4.test/api/sessions"
+        url: "https://console-ds-smartcheck.apps.cluster-c18f.c18f.example.opentlc.com/api/sessions"
         validate_certs: false
         method: POST
         body_format: json
         status_code: 201
         body:
           user:
-            userID: "add admin name"
-            password: "add admin pass"
+            userID: "administrator"
+            password: "GFL54#cd6*"
       register: loginoutput
 
     - set_fact:
@@ -23,7 +23,7 @@
   tasks:
     - name: start_check_image
       uri:
-        url: "https://deepsec-console-mysql.apps.im.ocp4.test/api/scans"
+        url: "https://console-ds-smartcheck.apps.cluster-c18f.c18f.example.opentlc.com/api/scans"
         validate_certs: false
         method: POST
         body_format: json
@@ -45,7 +45,7 @@
         minutes: 2
     - name: start_check_image
       uri:
-        url: "https://deepsec-console-mysql.apps.im.ocp4.test/api/scans?digest=sha256:65ba79bf6f3f103f606011a63a12f48b8bbc4f49fde3f96bee55e975d35b00ff"
+        url: "https://console-ds-smartcheck.apps.cluster-c18f.c18f.example.opentlc.com/api/scans?digest=sha256:65ba79bf6f3f103f606011a63a12f48b8bbc4f49fde3f96bee55e975d35b00ff"
         validate_certs: false
         method: GET
         body_format: json
