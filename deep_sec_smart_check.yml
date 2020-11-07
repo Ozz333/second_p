@@ -11,8 +11,8 @@
         status_code: 201
         body:
           user:
-            userID: "administrator"
-            password: "GFL54#cd6*"
+            userID: "{{ user }}"
+            password: "{{ pass }}"
       register: loginoutput
 
     - set_fact:
